@@ -4,7 +4,6 @@ async function buscarEMostrarVideos(){
     try{
         const busca = await fetch("http://localhost:3000/videos");
         const videos = await busca.json();
-    
             videos.forEach((video) => {
                 if(video.categoria =="") {
                     throw new Error("Um dos vídeos está sem categoria");
@@ -27,3 +26,25 @@ async function buscarEMostrarVideos(){
 }
 
 buscarEMostrarVideos();
+
+const barraDePesquisa = document.querySelector(".pesquisar__input");
+barraDePesquisa.addEventListener("input", filtrarPesquisa);
+
+function filtrarPesquisa(){
+    const videos = document.querySelectorAll(".videos__item");
+
+    if(barraDePesquisa.value != ""){
+        for(let video of videos){
+            let titulo = video.querySelector(".titulo-video").textContent.toLowerCase();
+            let valorFiltro = barraDePesquisa.value.toLowerCase();
+
+            if(!titulo.includes(valorFiltro)){
+                video.style.display = "none";
+            } else {
+                video.style.display = "block";
+            }
+        }
+    } else {
+        video.style.display = "block";
+    }
+}
