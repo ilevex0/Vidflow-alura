@@ -22,7 +22,8 @@ async function buscarEMostrarVideos(){
                 `
             })
     } catch(error) {
-        containerVideos.innerHTML = `<p>Houve um erro ao carregar os vídeos: ${error}</p>`
+        containerVideos.innerHTML = `<p>ATENÇÃO: O funcionamento do projeto depende do json-server estar ativo em sua máquina. Para iniciar o json-server, consulte o repositório do projeto, que contém as instruções necessárias.
+        Houve um erro ao carregar os vídeos: ${error}</p>`
     }
 }
 
